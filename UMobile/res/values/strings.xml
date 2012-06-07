@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, UMobileActivity!</string>
+    <string name="app_name">UMobile</string>
+    <string name="step1">Step 1: Get your artwork!</string>
+    <string name="snapshot_button">Take a snapshot</string>
+    <string name="gallery_button">Select from Gallery</string>
+	<string name="step2">Step 2: Submit your artwork!</string>
+	<string name="subject">Subject</string>
+	<string name="subject_hint">Subject (optional)</string>
+	<string name="descr">Description</string>
+	<string name="descr_hint">Description (optional)</string>
+	<string name="email_button">Send to Unintentional</string>
+</resources>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/step1"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/take_snapshot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/snapshot_button"
+        android:onClick="takeSnapshot" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="or"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <Button
+        android:id="@+id/select_gallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gallery_button" />
+    
+    <View
+        android:id="@+id/spacer"
+        android:layout_height="3dp"
+        android:background="#FFFFFFFF"
+        android:layout_width="fill_parent"
+        />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/step2"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            
+
+                <TextView
+                    android:id="@+id/subj"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/subject"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+           
+
+            <EditText
+                android:id="@+id/edit_subj"
+                android:hint="@string/subject_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10" >
+
+                <requestFocus />
+            </EditText>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/descr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/descr"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            
+            <EditText
+                android:id="@+id/edit_descr"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:hint="@string/descr_hint" />
+
+        </TableRow>
+
+	
+    </TableLayout>
+    <Button
+                android:id="@+id/email_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/email_button" 
+                android:onClick="sendArtwork"/>
+
+</LinearLayout>
