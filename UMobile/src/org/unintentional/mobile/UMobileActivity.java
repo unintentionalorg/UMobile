@@ -2,14 +2,18 @@ package org.unintentional.mobile;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.inputmethodservice.ExtractEditText;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class UMobileActivity extends Activity {
 	
 	 public static final int CAMERA_CODE = 100;
+	 public static final int EMAIL_CODE = 200;
 	
     /** Called when the activity is first created. */
     @Override
@@ -28,7 +32,10 @@ public class UMobileActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     	if (requestCode==CAMERA_CODE && resultCode==RESULT_OK){
-    		enableStep2();
+    		enableStep2();    		
+    	}if (requestCode==EMAIL_CODE && resultCode==RESULT_OK){
+        	Toast.makeText(this, "Email sent", Toast.LENGTH_SHORT).show();   
+        	cleanAll();  		
     	}
     }
     
@@ -52,8 +59,16 @@ public class UMobileActivity extends Activity {
     }
     
     public void sendArtwork(View aView){
-    	Toast.makeText(this, "Email sent", Toast.LENGTH_SHORT).show();   
-    	cleanAll();
+    	
+    	EditText subj = (EditText)findViewById(R.id.edit_subj);
+    	EditText descr = (EditText)findViewById(R.id.edit_descr);
+    	Intent emailIntent = new Intent(Intent.ACTION_SENDTO,Uri.fromParts("mailto", "michele@borioli.net", null));
+    	emailIntent.putExtra(Intent.EXTRA_SUBJECT,subj.getText());
+    	emailIntent.putExtra(Intent.EXTRA_TEXT,descr.getText());
+    	startActivityForResult(emailIntent, EMAIL_CODE);
+    	
+    	
+
     }
     public void cleanAll(){
     	disableStep2();
