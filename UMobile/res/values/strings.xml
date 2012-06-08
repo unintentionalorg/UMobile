@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="hello">Hello World, UMobileActivity!</string>
     <string name="app_name">UMobile</string>
     <string name="step1">Step 1: Get your artwork!</string>

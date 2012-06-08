@@ -38,14 +38,12 @@ public class UMobileActivity extends Activity {
     	Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         fileURI = getOutputImageFileUri(); // create a file to save the image
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileURI); // set the image file name
-
     	startActivityForResult(cameraIntent,CAMERA_CODE);
     }
     
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     	if (requestCode==CAMERA_CODE && resultCode==RESULT_OK){
-    		
     		enableStep2();    		
     	}if (requestCode==EMAIL_CODE){
         	Toast.makeText(this, "Email sent (I presume...)", Toast.LENGTH_SHORT).show();   
@@ -73,27 +71,19 @@ public class UMobileActivity extends Activity {
     }
     
     public void sendArtwork(View aView){
-    	
-//		strFile = Environment.getExternalStorageDirectory().getAbsolutePath() + "/temp";
-//		File file = new File(strFile);
-//		if (!file.exists())
-//		file.mkdirs();
-//		strFile = strFile + "/report.html";
-//		createFile();
     	EditText subj = (EditText)findViewById(R.id.edit_subj);
     	EditText descr = (EditText)findViewById(R.id.edit_descr);
-    	//Intent emailIntent = new Intent(Intent.ACTION_SENDTO,Uri.fromParts("mailto", "michele@borioli.net", null));
     	Intent emailIntent = new Intent(Intent.ACTION_SEND);
-    	//emailIntent.setType("multipart/mixed");
-    	emailIntent.putExtra(Intent.EXTRA_EMAIL,new String[]{"contribute@unintentional.org"});
-    	emailIntent.putExtra(Intent.EXTRA_SUBJECT,subj.getText().toString());
-    	emailIntent.putExtra(Intent.EXTRA_TEXT,descr.getText().toString());
-    	emailIntent.putExtra(Intent.EXTRA_STREAM, fileURI);
-    	startActivityForResult(Intent.createChooser(emailIntent, "Send mail..."), EMAIL_CODE);
-    	
-    	
+    	emailIntent.setType("image/jpeg");  // attachment is a jpeg
+    	emailIntent.putExtra(Intent.EXTRA_EMAIL,new String[]{"contribute@unintentional.org"}); 
+    	emailIntent.putExtra(Intent.EXTRA_SUBJECT,subj.getText().toString()); //get subject from one EditText in the UI
+    	emailIntent.putExtra(Intent.EXTRA_TEXT,descr.getText().toString()); //get body from one EditText in the UI
+      	emailIntent.putExtra(Intent.EXTRA_STREAM, fileURI); // add attachment
+    	startActivityForResult(Intent.createChooser(emailIntent, "Choose Email application:"), EMAIL_CODE);
 
     }
+    
+    
     public void cleanAll(){
     	disableStep2();
     }
@@ -129,28 +119,5 @@ public class UMobileActivity extends Activity {
         return mediaFile;
     }
     
-    private void createFile() {
-    	try {
-    		
-    	String data = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/><html><body style='tab-interval: .5in'><div class=\"Section1\"><div>";
-    	data += "<p class=\"MsoNormal\" dir=\"LTR\" style=\"text-align: left; unicode-bidi: embed\"><span lang=\"AR-EG\">";
-    	FileOutputStream fos = new FileOutputStream(strFile);
-    	 
-    	Writer out = new OutputStreamWriter(fos, "UTF-8");
-    	 
-    	data += "Email data" + "<br />";
-    	data += "bla bla bla" + "<br />";
-    	data += "Footer" + "<br />";
-    	 
-    	data += "</span></p></div></body></html>";
-    	out.write(data);
-    	out.flush();
-    	out.close();
-    	 
-    	} catch (Throwable t) {
-    	Toast.makeText(this, "Request failed: " + t.toString(),
-    	Toast.LENGTH_LONG).show();
-    	 Log.d("strFile", t.getMessage());
-    	}
-    	}
+
 }
