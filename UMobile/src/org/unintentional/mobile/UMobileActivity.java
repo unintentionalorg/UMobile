@@ -1,9 +1,6 @@
 package org.unintentional.mobile;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -16,6 +13,9 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Toast;
 
 public class UMobileActivity extends Activity {
@@ -30,7 +30,7 @@ public class UMobileActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        disableStep2();
+//        disableStep2();
         
     }
     
@@ -44,13 +44,28 @@ public class UMobileActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     	if (requestCode==CAMERA_CODE && resultCode==RESULT_OK){
-    		enableStep2();    		
+ //   		enableStep2();
+    		disableStep1();
+    		
     	}if (requestCode==EMAIL_CODE){
         	Toast.makeText(this, "Email sent (I presume...)", Toast.LENGTH_SHORT).show();   
         	cleanAll();  		
     	}
     }
     
+    public void disableStep1(){
+    	RelativeLayout theLayout = (RelativeLayout)findViewById(R.id.relative_layout);
+		ImageView check_ok = new ImageView(this);
+		check_ok.setImageResource(R.drawable.check);
+		RelativeLayout.LayoutParams pr = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+		pr.setMargins(0, 0, 18, 0);
+		pr.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+		pr.addRule(RelativeLayout.ALIGN_TOP,R.id.take_snapshot);
+		check_ok.setLayoutParams(pr);
+		theLayout.addView(check_ok);
+		findViewById(R.id.take_snapshot).setEnabled(false);
+    	
+    }
     
     public void disableStep2(){
     	findViewById(R.id.email_button).setEnabled(false);
@@ -58,7 +73,8 @@ public class UMobileActivity extends Activity {
     	findViewById(R.id.edit_descr).setEnabled(false);
     	findViewById(R.id.subj).setEnabled(false);
     	findViewById(R.id.edit_subj).setEnabled(false);
-    	findViewById(R.id.textView5).setEnabled(false);
+    	findViewById(R.id.Step_1).setEnabled(false);
+    	findViewById(R.id.Step_1_descr).setEnabled(false);
     }
     
     public void enableStep2(){
@@ -67,14 +83,15 @@ public class UMobileActivity extends Activity {
     	findViewById(R.id.edit_descr).setEnabled(true);
     	findViewById(R.id.subj).setEnabled(true);
     	findViewById(R.id.edit_subj).setEnabled(true);
-    	findViewById(R.id.textView5).setEnabled(true);
+    	findViewById(R.id.Step_1).setEnabled(true);
+    	findViewById(R.id.Step_1_descr).setEnabled(true);
     }
     
     public void sendArtwork(View aView){
     	EditText subj = (EditText)findViewById(R.id.edit_subj);
     	EditText descr = (EditText)findViewById(R.id.edit_descr);
     	Intent emailIntent = new Intent(Intent.ACTION_SEND);
-    	emailIntent.setType("image/jpeg");  // attachment is a jpeg
+    	emailIntent.setType("message/rfc822");  // attachment is a jpeg
     	emailIntent.putExtra(Intent.EXTRA_EMAIL,new String[]{"contribute@unintentional.org"}); 
     	emailIntent.putExtra(Intent.EXTRA_SUBJECT,subj.getText().toString()); //get subject from one EditText in the UI
     	emailIntent.putExtra(Intent.EXTRA_TEXT,descr.getText().toString()); //get body from one EditText in the UI
@@ -85,7 +102,7 @@ public class UMobileActivity extends Activity {
     
     
     public void cleanAll(){
-    	disableStep2();
+//    	disableStep2();
     }
     
     
