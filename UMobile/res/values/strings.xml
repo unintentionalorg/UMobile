@@ -16,5 +16,6 @@
 	<string name="descr">Description</string>
 	<string name="descr_hint">Some details (optional)</string>
 	<string name="email_button">Send to Unintentional</string>
+	<string name="again_button">Send another one</string>
 	<string name="copyright">2012 - Unintentional.org</string>
 </resources>
