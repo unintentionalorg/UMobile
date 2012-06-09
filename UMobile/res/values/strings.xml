@@ -3,15 +3,17 @@
     <string name="hello">Hello World, UMobileActivity!</string>
     <string name="app_name">UMobile</string>
     <string name="step1">Step 1:</string>
-    <string name="step1_descr">Get your artwork!</string>
+    <string name="step1_descr">Capture your artwork!</string>
     <string name="step1_help">Take a snapshot:</string>
     <string name="snapshot_button">Take a snapshot</string>
     <string name="gallery_button">Select from Gallery</string>
-	<string name="step2">Step 2</string>
+	<string name="step2">Step 2:</string>
 	<string name="step2_descr">Submit your artwork!</string>
+	<string name="step2_help">Mail it to Unintentional.org:</string>
 	<string name="subject">Subject</string>
 	<string name="subject_hint">Subject (optional)</string>
+	<string name="step2_help_descr">Add some details (if you want):</string>
 	<string name="descr">Description</string>
-	<string name="descr_hint">Description (optional)</string>
+	<string name="descr_hint">Some details (optional)</string>
 	<string name="email_button">Send to Unintentional</string>
 </resources>

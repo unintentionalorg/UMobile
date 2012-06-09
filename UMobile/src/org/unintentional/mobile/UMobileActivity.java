@@ -69,31 +69,24 @@ public class UMobileActivity extends Activity {
     
     public void disableStep2(){
     	findViewById(R.id.email_button).setEnabled(false);
-    	findViewById(R.id.descr).setEnabled(false);
     	findViewById(R.id.edit_descr).setEnabled(false);
-    	findViewById(R.id.subj).setEnabled(false);
-    	findViewById(R.id.edit_subj).setEnabled(false);
     	findViewById(R.id.Step_1).setEnabled(false);
     	findViewById(R.id.Step_1_descr).setEnabled(false);
     }
     
     public void enableStep2(){
     	findViewById(R.id.email_button).setEnabled(true);
-    	findViewById(R.id.descr).setEnabled(true);
     	findViewById(R.id.edit_descr).setEnabled(true);
-    	findViewById(R.id.subj).setEnabled(true);
-    	findViewById(R.id.edit_subj).setEnabled(true);
     	findViewById(R.id.Step_1).setEnabled(true);
     	findViewById(R.id.Step_1_descr).setEnabled(true);
     }
     
     public void sendArtwork(View aView){
-    	EditText subj = (EditText)findViewById(R.id.edit_subj);
     	EditText descr = (EditText)findViewById(R.id.edit_descr);
     	Intent emailIntent = new Intent(Intent.ACTION_SEND);
     	emailIntent.setType("message/rfc822");  // attachment is a jpeg
     	emailIntent.putExtra(Intent.EXTRA_EMAIL,new String[]{"contribute@unintentional.org"}); 
-    	emailIntent.putExtra(Intent.EXTRA_SUBJECT,subj.getText().toString()); //get subject from one EditText in the UI
+    	emailIntent.putExtra(Intent.EXTRA_SUBJECT,"A contribution"); //get subject from one EditText in the UI
     	emailIntent.putExtra(Intent.EXTRA_TEXT,descr.getText().toString()); //get body from one EditText in the UI
       	emailIntent.putExtra(Intent.EXTRA_STREAM, fileURI); // add attachment
     	startActivityForResult(Intent.createChooser(emailIntent, "Choose Email application:"), EMAIL_CODE);

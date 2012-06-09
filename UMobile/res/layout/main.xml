@@ -16,8 +16,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical" 
-    android:paddingTop="15dp"
-    android:paddingBottom="15dp"
+    android:paddingBottom="5dp"
     android:background="@drawable/main_gradient">
 
     <TextView
@@ -25,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
         android:text="@string/step1"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -52,7 +51,7 @@
         android:id="@+id/take_snapshot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/Step_1_help"
+        android:layout_alignTop="@id/Step_1_help"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:background="@drawable/camera_button"        
@@ -74,9 +73,9 @@
     	android:background="@drawable/separator_gradient"/>
     
    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	android:scrollbarStyle="outsideInset"
+    android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:scrollbarStyle="insideOverlay"
 	android:background="@drawable/main_gradient"
 	android:id="@+id/m_scroll"> 
     
@@ -85,79 +84,67 @@
 		android:id="@+id/relative_layout2"
     	android:layout_width="match_parent"
     	android:layout_height="wrap_content"
+
     	android:orientation="vertical" >
       
      <TextView
         android:id="@+id/Step_2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="15dp"
-        android:layout_below="@+id/take_snapshot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"        
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/step2"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     
     <TextView
         android:id="@+id/Step_2_descr"
-        android:layout_below="@+id/Step_2"
+        android:layout_toRightOf="@id/Step_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_alignLeft="@id/Step_1_descr"
+        android:layout_alignBottom="@id/Step_2"
+        android:layout_marginLeft="5dp"
         android:text="@string/step2_descr"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
-  
-           
-
+    
     <TextView
-        android:id="@+id/subj"
-        android:layout_below="@+id/Step_2_descr"
-        android:layout_marginTop="5dp"
-        android:layout_alignLeft="@id/Step_1_descr"
+        android:id="@+id/Step_2_descr_help"
+        android:layout_below="@id/Step_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/subject"
+        android:layout_alignLeft="@id/Step_2"
+        android:text="@string/step2_help_descr"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-           
-
-     <EditText
-        android:id="@+id/edit_subj"
-        android:layout_below="@id/subj"
-        android:layout_alignLeft="@id/Step_1_descr"
-        android:hint="@string/subject_hint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10" />
-
-	 <TextView
-        android:id="@+id/descr"
-        android:layout_below="@id/edit_subj"
-        android:layout_marginTop="20dp"
-        android:layout_alignLeft="@id/Step_1_descr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/descr"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
 	 
 	<EditText
        android:id="@+id/edit_descr"
-       android:layout_width="wrap_content"
+       android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:layout_alignLeft="@id/Step_1_descr"
-       android:layout_below="@+id/descr"
+       android:layout_below="@+id/Step_2_descr_help"
+       android:layout_marginTop="5dp"
+       android:hint="@string/descr_hint"
        android:ems="10"
        android:inputType="textMultiLine" />
+	
+	<TextView
+        android:id="@+id/Step_2_help"
+        android:layout_below="@id/edit_descr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/Step_2"
+        android:text="@string/step2_help"
+        android:layout_marginTop="5dp"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
      
     <Button
         android:id="@+id/email_button"
-        android:layout_below="@+id/edit_descr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/email_button" 
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@id/Step_2_help"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/email_button"    
         android:onClick="sendArtwork"/>
 </RelativeLayout>
 
