@@ -115,17 +115,16 @@
         android:layout_alignLeft="@id/Step_2"
         android:text="@string/step2_help_descr"
         android:textAppearance="?android:attr/textAppearanceSmall" />
-
-	 
+
 	<EditText
-       android:id="@+id/edit_descr"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_below="@+id/Step_2_descr_help"
-       android:layout_marginTop="5dp"
-       android:hint="@string/descr_hint"
-       android:ems="10"
-       android:inputType="textMultiLine" />
+	    android:id="@+id/edit_descr"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/Step_2_descr_help"
+	    android:layout_marginTop="5dp"
+	    android:ems="10"
+	    android:hint="@string/descr_hint"
+	    android:inputType="textMultiLine" />
 	
 	<TextView
         android:id="@+id/Step_2_help"
